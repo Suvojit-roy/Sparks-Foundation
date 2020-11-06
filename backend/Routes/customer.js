@@ -57,7 +57,7 @@ router.post('/:id/:id1',async(req,res)=>{
     const add= new Transanction({
         sender:sender.name,
         receiver:receiver.name,
-        amount:amt
+        amount:req.body.amt
     })
 
     try{

@@ -126,7 +126,7 @@ const SendMoney=(props)=>{
 
 
       </CardContent>
-      <CardActions>
+      <CardActions>    
       {present.name!=undefined ?
         <Form sendername={present.name} id1={val}/>:""}
        

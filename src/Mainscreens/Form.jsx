@@ -21,6 +21,7 @@ const Form = (props) => {
   console.log(props)
 
   let history = useHistory();
+  console.log(history)
 
   const [data, setData] = useState([])
   const [id, setid] = useState()
@@ -58,6 +59,21 @@ const Form = (props) => {
 
 
   const sendData = () => {
+    
+    fetch(url+props.id1, {
+      headers: {
+        method: 'GET',
+        "accept": "application/json",
+        "Content-type": "application/json"
+      }
+    }).then(res => res.json())
+      .then(result => {
+        //entire list
+        // console.log(result)
+        alert(`${props.sendername} has succesfully sent Rs ${amount} to ${result.name}`)
+        // console.log(result)
+
+      })
 
 
     fetch(url + props.id1 + "/" + val,
@@ -89,14 +105,15 @@ const Form = (props) => {
         },
         method: "put",
         body: JSON.stringify({
-          amt: amount
+           amt:amount
         })
 
         // mode:'no-cors'
       }).then(res => res.json())
       .then(result => {
         console.log(result);
-        history.push("/customer");
+        
+        history.push("/transactions");
       }).catch(err => console.log(err))
 
 
