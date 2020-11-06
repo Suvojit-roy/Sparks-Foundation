@@ -25,50 +25,49 @@ router.get('/:id',async(req,res)=>{
     
 
 })
-router.get('/:id',async(req,res)=>{
+
+
+router.put("/:id/:id1",async(req,res)=>{
     try{
-        const customer= await Customer.findById(req.params.id)
-        res.json(customer)
-    }catch(err){
-        res.send('Error'+err)
-    }
-    
-
-})
-
-
-router.patch("/:id/:id1",async(req,res)=>{
-    try{
-        const sender=await Customer.findById(req.params.id)
-        const receiver=await Customer.findById(req.params.id1)
-        sender.amount=sender.amount-req.body.amount
-        receiver.amount=receiver.amount+req.body.amount
-        const a1=await sender.save()
-        const a2=await receiver.save()
-        res.json(a1)
-        res.json(a2)
+        // id:sender
+        // id1:receiver
+        const {amt} = req.body
+        console.log(req.body)
+        console.log(amt)
+        await Customer.findByIdAndUpdate(req.params.id,
+            {
+                $inc:{amount:-amt}
+            })
+        await Customer.findByIdAndUpdate(req.params.id1,
+                {
+                    $inc:{amount:amt}
+                })
+        res.json({message:"updated"})
     }catch(err){
         res.send("error"+ err)
     }
 })
 
 router.post('/:id/:id1',async(req,res)=>{
+
+    const {amt} =req.body
     const sender=await Customer.findById(req.params.id)
     const receiver=await Customer.findById(req.params.id1)
     
     const add= new Transanction({
         sender:sender.name,
         receiver:receiver.name,
-        amount:req.body.amount
+        amount:amt
     })
 
     try{
         const a1=await add.save()
-        res.json(a1)
+        res.json({message:"transaction added",trans:a1})
     }catch(err){
         res.send("error")
     }
 })
+
 
 
 

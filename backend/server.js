@@ -14,16 +14,14 @@ con.on('open',function(){
 })
 
 app.use(express.json())
-app.use(cors()) 
+app.use(cors()) ;
+
 const customerRouter=require('./Routes/customer')
 app.use('/customer',customerRouter)
-// const transanctionRouter=require('./Routes/transanction')
-// app.use('/transanction',transanctionRouter)
+app.use('/transaction',require('./Routes/transactions'))
 
-// app.use((req, res, next) => {
-//     res.header('Access-Control-Allow-Origin', '*');
-//     next();
-//   });
+
+
 
 app.listen(9000,function(){
     console.log("server started")

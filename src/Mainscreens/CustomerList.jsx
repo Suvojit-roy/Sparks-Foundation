@@ -74,8 +74,8 @@ export default function CustomizedTables() {
         <TableHead>
           <TableRow>
             <StyledTableCell>Customer Name</StyledTableCell>
-            <StyledTableCell align="right">Email</StyledTableCell>
-            <StyledTableCell align="right">Amount Present</StyledTableCell>
+            <StyledTableCell align="center">Email</StyledTableCell>
+            <StyledTableCell align="center">Amount Present</StyledTableCell>
             <StyledTableCell align="right">Money Transanction</StyledTableCell>
             
           </TableRow>
@@ -83,10 +83,10 @@ export default function CustomizedTables() {
 
         <TableBody>
           {data.map((Data) => (
-            <StyledTableRow key={Data.id}>
-              <StyledTableCell component="th" scope="row">{Data.name}</StyledTableCell>
-              <StyledTableCell align="right">{Data.email}</StyledTableCell>
-              <StyledTableCell align="right">{Data.amount}</StyledTableCell>
+            <StyledTableRow key={Data._id}>
+              <StyledTableCell component="th" scope="row" >{Data.name}</StyledTableCell>
+              <StyledTableCell align="center">{Data.email}</StyledTableCell>
+              <StyledTableCell align="center">{Data.amount}</StyledTableCell>
               <StyledTableCell align="right"><Button color="inherit">
               <Link to={"/sendmoney/"+Data._id} style={{textDecoration:"none"}}>Send Money</Link>
               </Button></StyledTableCell>

@@ -35,7 +35,7 @@ export default function ButtonAppBar() {
             <NavLink to="/customer" exact style={{color:"white",textDecoration:"none"}}>Customer List</NavLink>
           </Button>
           <Button color="inherit">
-            <NavLink to="/customer" exact style={{color:"white",textDecoration:"none"}}>Transanctions</NavLink>
+            <NavLink to="/transactions" exact style={{color:"white",textDecoration:"none"}}>Transanctions</NavLink>
           </Button>
         </Toolbar>
       </AppBar>
